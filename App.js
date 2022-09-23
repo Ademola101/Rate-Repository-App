@@ -1,12 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Main from './src/Components/Main';
 
 export default function App() {
+  console.log('App executed');
   return (
-    <View style={styles.container}>
-      <Text>Hello worlds</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Main/>
   );
 }
 
@@ -16,5 +15,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    color: 'red'
   },
 });
