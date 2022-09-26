@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import Constants from 'expo-constants';
 import RepositoryList from './RepositoryList';
+import AppBar from './AppBar';
 
 const styles = StyleSheet.create({
 
@@ -14,8 +15,8 @@ const styles = StyleSheet.create({
 
 const Main = () => {
   return (
-    <View styles = {styles.container}>
-      <Text>Rate repository app</Text>
+    <View >
+      <AppBar/>
       
       <RepositoryList/>
       

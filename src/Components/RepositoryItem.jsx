@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View,  Text} from 'react-native';
 
-const RepositoryItem = ({repositories}) => {
+const RepositoryItem = ({ repositories }) => {
   return (
     <View>
       <Text>
@@ -27,6 +27,6 @@ const RepositoryItem = ({repositories}) => {
   );
 }
 
-const styles = StyleSheet.create({})
+// const styles = StyleSheet.create({})
 
 export default RepositoryItem;
