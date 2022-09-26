@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,  Text} from 'react-native';
+import {View,  Text, Image} from 'react-native';
 
 const RepositoryItem = ({ repositories }) => {
   return (
@@ -22,7 +22,7 @@ const RepositoryItem = ({ repositories }) => {
       <Text>
        Review Count: {repositories.reviewCount}
       </Text>
-      
+      <Image source = {{uri: repositories.ownerAvatarUrl}}  style={{width: 400, height: 400}}/>
     </View>
   );
 }
