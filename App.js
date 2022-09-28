@@ -8,7 +8,7 @@ export default function App() {
       <Main />
       <StatusBar style="auto" />
     </View>
-    
+
   );
 }
 
