@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, FlatList, ScrollView } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import RepositoryItem from './RepositoryItem';
 import repositories from '../data/repository';
 
