@@ -6,15 +6,15 @@ import Count from './Count';
 
 
 const RepositoryItem = ({ repositories }) => {
-  console.log(repositories.reviewCount);
   return (
 
     <ScrollView>
       <View style = {styles.wrapper}>
         <Image source = {{ uri: repositories.ownerAvatarUrl }}  style={styles.image}/>
         <View style = {styles.heading} >
-          <Text color= 'primary' fontWeight= 'bold' fontSize= 'subheading' content={repositories.description} />
-          <Text style={styles.blueText} align= 'start' bg= 'blue' color= 'primary' fontWeight= 'bold' fontSize= 'subheading' content={repositories.language} />
+          <Text color= 'primary' fontWeight= 'bold' fontSize= 'subheading' content={repositories.fullName} />
+          <Text color= 'primary'  fontSize= 'subheading' content={repositories.description} style = {styles.margin}/>
+          <Text style={styles.blueText} align= 'start' bg= 'blue' color= 'primary'  fontSize= 'subheading' content={repositories.language} />
 
         </View>
 
@@ -81,6 +81,9 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 5,
     margingTop: 10,
+  },
+  margin: {
+    margin: 10
   }
 });
 

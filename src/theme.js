@@ -41,7 +41,7 @@ const theme = {
 
   fontWeights: {
     normal: '400',
-    bold: '700',
+    bold: 'bold',
   },
   backgroundColor : {
     dark : '#24292e',

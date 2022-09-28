@@ -8,7 +8,7 @@ const Text = ({ color, fontSize, fontWeight, style, bg, content, align }) => {
     color === 'primary' && styles.colorPrimary,
     color === 'blue' && styles.colorBlue,
     fontSize === 'subheading' && styles.fontSizeSubheading,
-    fontWeight === 'bold' && styles.fontWeigthBold,
+    fontWeight === 'bold' && styles.fontWeightBold,
     bg === 'blue' && styles.bgBlue,
     align === 'start' && styles.alignStart,
 
