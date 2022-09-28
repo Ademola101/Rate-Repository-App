@@ -1,76 +1,42 @@
 import React from 'react';
-import { View,  Text, Image, StyleSheet } from 'react-native';
+import Text from './Text';
+import { View,  Image, StyleSheet, ScrollView } from 'react-native';
 import theme from '../theme';
+import Count from './Count';
+
 
 const RepositoryItem = ({ repositories }) => {
   console.log(repositories.reviewCount);
   return (
 
-    <View>
+    <ScrollView>
       <View style = {styles.wrapper}>
         <Image source = {{ uri: repositories.ownerAvatarUrl }}  style={styles.image}/>
         <View >
-          <Text style = {styles.fullname}>
-            {repositories.fullName}
-          </Text>
+          <Text color= 'primary' fontWeight= 'bold' fontSize= 'subheading' content={repositories.description} />
+          <Text color= 'primary' fontWeight= 'bold' fontSize= 'subheading' content={repositories.language} />
 
-          <Text>
-            {repositories.description}
-          </Text>
-
-          <Text>
-            {repositories.language}
-          </Text>
         </View>
 
 
       </View>
       <View style = {styles.count}>
 
-        <View>
-          <Text>
-            {repositories.forksCount}
-          </Text>
-          <Text>
-            Forks
-          </Text>
 
-        </View>
-        <View>
-          <Text>
-            {repositories.stargazersCount}
-          </Text>
-          <Text>
-            Stars
-          </Text>
+        <Count text= 'Forks' repositories={repositories.forksCount}/>
+        <Count text= 'Stars' repositories={repositories.stargazersCount}/>
+        <Count text= 'Reviews' repositories={repositories.reviewCount}/>
+        <Count text= 'Rating' repositories={repositories.ratingAverage}/>
 
-        </View>
 
-        <View>
-          <Text>
-            {repositories.reviewCount}
-          </Text>
-          <Text>
-            Reviews
-          </Text>
 
-        </View>
 
-        <View>
-          <Text>
-            {repositories.ratingAverage}
-          </Text>
-          <Text>
-            Rating
-          </Text>
-
-        </View>
 
 
       </View>
 
 
-    </View>
+    </ScrollView>
   );
 };
 

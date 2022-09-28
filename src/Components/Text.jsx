@@ -1,19 +1,18 @@
 import React from 'react';
 import { View, StyleSheet, Text as NativeText } from 'react-native';
 import theme from '../theme';
-
-const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
+const Text = ({ color, fontSize, fontWeight, style, content }) => {
   const textStyle = [
-    style.text,
-    color === 'textSecondary' && style.colorTextSecondary,
-    color === 'primary' && style.colorPrimary,
+    styles.text,
+    color === 'textSecondary' && styles.colorTextSecondary,
+    color === 'primary' && styles.colorPrimary,
     fontSize === 'subheading' && styles.fontSizeSubheading,
-    fontWeight === 'bold' && style.fontWeigthBold,
+    fontWeight === 'bold' && styles.fontWeigthBold,
     style
   ];
   return (
     <View>
-      <NativeText style = {textStyle} {...props}/>
+      <NativeText style = {textStyle}> {content}</NativeText>
     </View>
   );
 };
