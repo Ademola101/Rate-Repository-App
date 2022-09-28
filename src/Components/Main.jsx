@@ -9,13 +9,13 @@ const styles = StyleSheet.create({
   container: {
     marginTop: Constants.statusBarHeight,
     flexGrow : 1,
-    flexShrink : 1,
+    flex: 1,
   }
 });
 
 const Main = () => {
   return (
-    <View >
+    <View style = {styles.container} >
       <AppBar/>
 
       <RepositoryList/>

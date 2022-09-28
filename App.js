@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ecf0f1',
     padding: 8,
+    flexGlow: 1,
   },
   paragraph: {
     margin: 24,

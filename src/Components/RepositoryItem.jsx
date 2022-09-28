@@ -1,6 +1,6 @@
 import React from 'react';
 import Text from './Text';
-import { View,  Image, StyleSheet, ScrollView } from 'react-native';
+import { View,  Image, StyleSheet, } from 'react-native';
 import theme from '../theme';
 import Count from './Count';
 
@@ -8,7 +8,7 @@ import Count from './Count';
 const RepositoryItem = ({ repositories }) => {
   return (
 
-    <ScrollView>
+    <View>
       <View style = {styles.wrapper}>
         <Image source = {{ uri: repositories.ownerAvatarUrl }}  style={styles.image}/>
         <View style = {styles.heading} >
@@ -36,7 +36,7 @@ const RepositoryItem = ({ repositories }) => {
       </View>
 
 
-    </ScrollView>
+    </View>
   );
 };
 
