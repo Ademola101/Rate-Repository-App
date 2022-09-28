@@ -12,8 +12,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   view: {
-    flexGrow: 1,
-    height: '100%',
+    flex: 1,
   }
 });
 const ItemSeparator = () => <View style = {styles.separator}/>;
