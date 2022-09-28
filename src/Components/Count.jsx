@@ -5,15 +5,19 @@ import { View, StyleSheet } from 'react-native';
 
 const Count = ({ repositories, text }) => {
   return (
-    <View>
-      <View>
-        <Text content={repositories}/>
-        <Text content={text}/>
-      </View>
+    <View style = {styles.container}>
+      <Text content={repositories}/>
+      <Text content={text}/>
+
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+
+  container: {
+    flexGrow: 1,
+  }
+});
 
 export default Count;

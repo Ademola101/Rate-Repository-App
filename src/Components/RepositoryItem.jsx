@@ -12,9 +12,9 @@ const RepositoryItem = ({ repositories }) => {
     <ScrollView>
       <View style = {styles.wrapper}>
         <Image source = {{ uri: repositories.ownerAvatarUrl }}  style={styles.image}/>
-        <View >
+        <View style = {styles.heading} >
           <Text color= 'primary' fontWeight= 'bold' fontSize= 'subheading' content={repositories.description} />
-          <Text color= 'primary' fontWeight= 'bold' fontSize= 'subheading' content={repositories.language} />
+          <Text style={styles.blueText} align= 'start' bg= 'blue' color= 'primary' fontWeight= 'bold' fontSize= 'subheading' content={repositories.language} />
 
         </View>
 
@@ -43,6 +43,7 @@ const RepositoryItem = ({ repositories }) => {
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
+    marginBottom: 10,
   },
   fullname: {
     fontWeight: theme.fontWeights.bold,
@@ -51,7 +52,8 @@ const styles = StyleSheet.create({
   count:{
     flexDirection: 'row',
     alignItems: 'space-around',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    marginLeft: 50,
   },
 
   number: {
@@ -68,6 +70,17 @@ const styles = StyleSheet.create({
     marginRight:20,
     marginLeft: 20
 
+  },
+  heading: {
+    flexShrink: 1,
+    gap: 10,
+    justifyContent: 'space-around'
+  },
+
+  blueText: {
+    padding: 5,
+    borderRadius: 5,
+    margingTop: 10,
   }
 });
 
