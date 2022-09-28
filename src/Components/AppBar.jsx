@@ -22,8 +22,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.backgroundColor.dark,
     alignSelf: 'stretch',
     marginBottom: 40
-
-
   },
 
   text: {
