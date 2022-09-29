@@ -12,7 +12,7 @@ const SignIn = ({ handleSubmit }) => {
 
 
       <FormikTextInput name= 'username' placeholder = 'Username'/>
-      <FormikTextInput name= 'password' placeholder = 'Password'/>
+      <FormikTextInput name= 'password' placeholder = 'Password' secureTextEntry= {true}/>
       <Button onPress={handleSubmit} title="Sign in"/>
 
 
