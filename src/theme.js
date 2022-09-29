@@ -26,6 +26,7 @@ const theme = {
     textLightGrey: '#d3d3d3',
     textDarkGrey: '#a9a9a9',
     textBlue: '#1e90ff',
+    error: '#d73a4a',
   },
 
   fontSizes: {
