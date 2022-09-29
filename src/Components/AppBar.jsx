@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet, Text as NativeText, Pressable, ScrollView, TouchableHighlight } from 'react-native';
 import { Link } from 'react-router-native';
 import Constants from 'expo-constants';
-import Text from './Text';
 import theme from '../theme';
 const AppBar = () => {
   return (
