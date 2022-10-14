@@ -8,11 +8,9 @@ const AppBar = () => {
     <View style = {styles.container}>
 
       <ScrollView horizontal>
-        <Pressable>
-          <NativeText style = {styles.text}>
-        Repositories
-          </NativeText>
-        </Pressable>
+        <Link to = "/" component = {Pressable} style = {styles.link}>
+          <NativeText style = {styles.text}>Repositories</NativeText>
+        </Link>
 
 
         <Link to ='/signin'>
