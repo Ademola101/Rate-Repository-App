@@ -8,7 +8,7 @@ const SignIn = ({ handleSubmit }) => {
 
   return (
     <View>
-      <Text content= 'Sign' />
+      <Text content= 'Enter your username and password' />
 
 
       <FormikTextInput name= 'username' placeholder = 'Username'/>
