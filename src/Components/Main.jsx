@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
-import { Route, Routes, Navigate,} from 'react-router-native';
+import { Route, Routes, Navigate } from 'react-router-native';
 import SignInForm from './SignIn';
 
 const styles = StyleSheet.create({

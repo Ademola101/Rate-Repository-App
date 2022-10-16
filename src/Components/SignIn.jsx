@@ -3,6 +3,7 @@ import { View, StyleSheet, Button } from 'react-native';
 import Text from './Text';
 import FormikTextInput from './FormikTextInput';
 import { Formik } from 'formik';
+import * as yup from 'yup';
 const SignIn = ({ handleSubmit }) => {
 
 
@@ -12,8 +13,11 @@ const SignIn = ({ handleSubmit }) => {
 
 
       <FormikTextInput name= 'username' placeholder = 'Username'/>
-      <FormikTextInput name= 'password' placeholder = 'Password' secureTextEntry= {true}/>
-      <Button onPress={handleSubmit} title="Sign in"/>
+      <FormikTextInput name= 'password' placeholder = 'Password' secureTextEntry= {true} />
+      <View style = {styles.Button}>
+        <Button  onPress={handleSubmit} title="Sign in"/>
+      </View>
+
 
 
 
@@ -22,6 +26,10 @@ const SignIn = ({ handleSubmit }) => {
   );
 };
 
+const validationSchmea = yup.object().shape({
+  username: yup.string().required('Username is required'),
+  password: yup.string().required('Password is required'),
+});
 
 const SignInForm = () => {
   const initialValues = {
@@ -30,12 +38,19 @@ const SignInForm = () => {
   };
   return (
     <Formik initialValues={initialValues}
-      onSubmit = {values => console.log(values)}>
+      onSubmit = {values => console.log(values)}
+      validationSchema = {validationSchmea}
+
+    >
 
       {({ handleSubmit }) => <SignIn handleSubmit={handleSubmit}/>}
     </Formik>
   );
 };
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  Button: {
+    margin: 10,
+  }
+});
 
 export default SignInForm;
