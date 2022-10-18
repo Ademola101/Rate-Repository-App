@@ -5,6 +5,10 @@ import FormikTextInput from './FormikTextInput';
 import { Formik } from 'formik';
 import useSignIn from '../hooks/useSignIn';
 import * as yup from 'yup';
+import { useNavigate } from 'react-router-native';
+
+
+
 const SignIn = ({ handleSubmit }) => {
 
 
@@ -34,12 +38,16 @@ const validationSchmea = yup.object().shape({
 
 const SignInForm = () => {
 
+  const navigate = useNavigate();
+
   const [signIn] = useSignIn();
   const onSubmit = async (values) => {
     const { username, password } = values;
     try {
       const user =  await signIn({ username, password });
-      console.log(user);
+      if (user) {
+        navigate('/');
+      }
     } catch (e) {
       console.log(e);
     }
