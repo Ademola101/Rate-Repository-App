@@ -3,10 +3,13 @@ import { StyleSheet, View } from 'react-native';
 import Main from './src/Components/Main';
 import { NativeRouter } from 'react-router-native';
 import { ApolloProvider } from '@apollo/client';
-
-
+import AuthStorage from './src/utils/authStorage';
 import createApolloClient from './src/utils/apolloClient';
-const apolloClient = createApolloClient();
+import { AuthStorageProvider } from './src/contexts/AuthStorageContext';
+
+
+const authStorage = new AuthStorage();
+const apolloClient = createApolloClient(authStorage);
 
 export default function App() {
   return (
@@ -14,8 +17,10 @@ export default function App() {
 
       <NativeRouter>
         <ApolloProvider client={apolloClient}>
-          <Main />
-          <StatusBar style="auto" />
+          <AuthStorageProvider value={authStorage}>
+            <Main />
+            <StatusBar style="auto" />
+          </AuthStorageProvider>
         </ApolloProvider>
       </NativeRouter>
 
