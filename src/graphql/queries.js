@@ -22,3 +22,13 @@ query {
 }
 
 `;
+
+
+export const LOGOUT = gql`
+
+query {
+  me {
+    username
+  }
+}
+`;
