@@ -6,11 +6,14 @@ import theme from '../theme';
 import useAuthStorage from '../hooks/useAuthStorage';
 import { useMutation, useApolloClient, useQuery } from '@apollo/client';
 import { LOGOUT } from '../graphql/queries';
+import SignOut from './SignOut';
+
+
 const AppBar = () => {
   const authStorage = useAuthStorage();
-  const { data }= useQuery(LOGOUT);
+  const { data } = useQuery(LOGOUT);
   const apolloClient = useApolloClient();
-  const username = data ? data.authorizedUser.username : null;
+  console.log('data', data?.me?.username);
   // const logout = async () => {
 
 
@@ -21,12 +24,7 @@ const AppBar = () => {
 
 
   const signOut = async () => {
-
-
-    if (username) {
-      return;
-    }
-    await authStorage.removeAccessToken();
+    await authStorage.removeToken();
     apolloClient.resetStore();
 
   };
@@ -40,13 +38,15 @@ const AppBar = () => {
           <NativeText style = {styles.text}>Repositories</NativeText>
         </Link>
 
+        {
+          data?.me ? (
+            <SignOut onPress = {signOut} /> ) : (<Link to ='/signin'>
+            <NativeText style = {styles.text}> Sign In</NativeText>
 
-        <Link onPress={signOut} to ='/signin'>
-          <NativeText style = {styles.text}> {
-            username ? 'Sign out' : 'Sign in'
-          }</NativeText>
 
-        </Link>
+          </Link>)
+        }
+
       </ScrollView>
 
 
