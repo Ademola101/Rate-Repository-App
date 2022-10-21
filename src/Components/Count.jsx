@@ -3,10 +3,11 @@ import  Text from './Text';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-const Count = ({ repositories, text }) => {
+const Count = ({ repository, text }) => {
+
   return (
     <View style = {styles.container}>
-      <Text content={repositories}/>
+      <Text content={repository}/>
       <Text content={text}/>
 
     </View>

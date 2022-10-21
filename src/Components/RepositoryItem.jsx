@@ -1,42 +1,50 @@
 import React from 'react';
 import Text from './Text';
-import { View,  Image, StyleSheet, } from 'react-native';
+import { View,  Image, StyleSheet, Pressable } from 'react-native';
 import theme from '../theme';
 import Count from './Count';
+import { useNavigate } from 'react-router-native';
 
 
-const RepositoryItem = ({ repositories }) => {
+const RepositoryItem = ({ repository }) => {
+  const navigate = useNavigate();
+
   return (
+    <Pressable onPress={() => navigate(`/repository/${repository.id}`)}>
 
-    <View>
-      <View style = {styles.wrapper}>
-        <Image source = {{ uri: repositories.ownerAvatarUrl }}  style={styles.image}/>
-        <View style = {styles.heading} >
-          <Text color= 'primary' fontWeight= 'bold' fontSize= 'subheading' content={repositories.fullName} />
-          <Text color= 'primary'  fontSize= 'subheading' content={repositories.description} style = {styles.margin}/>
-          <Text style={styles.blueText} align= 'start' bg= 'blue' color= 'primary'  fontSize= 'subheading' content={repositories.language} />
+      <View>
+        <View testID = 'repositoryItem' style = {styles.wrapper}
+
+
+        >
+          <Image source = {{ uri: repository?.ownerAvatarUrl }}  style={styles.image}/>
+          <View style = {styles.heading} >
+            <Text color= 'primary' fontWeight= 'bold' fontSize= 'subheading' content={repository?.fullName} />
+            <Text color= 'primary'  fontSize= 'subheading' content={repository?.description} style = {styles.margin}/>
+            <Text style={styles.blueText} align= 'start' bg= 'blue' color= 'primary'  fontSize= 'subheading' content={repository?.language} />
+
+          </View>
+
+
+        </View>
+        <View style = {styles.count}>
+
+
+          <Count text= 'Forks' repository={repository?.forksCount}/>
+          <Count text= 'Stars' repository={repository?.stargazersCount}/>
+          <Count text= 'Reviews' repository={repository?.reviewCount}/>
+          <Count text= 'Rating' repository={repository?.ratingAverage}/>
+
+
+
+
+
 
         </View>
 
 
       </View>
-      <View style = {styles.count}>
-
-
-        <Count text= 'Forks' repositories={repositories.forksCount}/>
-        <Count text= 'Stars' repositories={repositories.stargazersCount}/>
-        <Count text= 'Reviews' repositories={repositories.reviewCount}/>
-        <Count text= 'Rating' repositories={repositories.ratingAverage}/>
-
-
-
-
-
-
-      </View>
-
-
-    </View>
+    </Pressable>
   );
 };
 
