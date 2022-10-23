@@ -1,4 +1,4 @@
-import { View, Text, Button, StyleSheet, Pressable } from 'react-native';
+import { View,  Button, StyleSheet, Pressable } from 'react-native';
 import React from 'react';
 import RepositoryItem from './RepositoryItem';
 import { useParams } from 'react-router-native';
@@ -17,12 +17,7 @@ const styles = StyleSheet.create({
 });
 
 
-export default function SingleRepo() {
-  const { id } = useParams();
-  const { data } = useQuery(REPOSITORY, {
-    variables: { id:id },
-  });
-
+export default function SingleRepo({ data }) {
 
 
   return (

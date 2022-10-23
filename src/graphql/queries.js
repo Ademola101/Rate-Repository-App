@@ -50,3 +50,28 @@ query repository($id: ID!) {
   }
 }
 `;
+
+
+export const GET_REVIEW = gql`
+
+query repository($id: ID!) {
+  repository(id: $id) {
+    id
+    fullName
+    reviews {
+      edges {
+        node {
+          id
+          text
+          rating
+          createdAt
+          user {
+            id
+            username  
+          }
+        }
+      }
+    }
+  }
+}
+`;
