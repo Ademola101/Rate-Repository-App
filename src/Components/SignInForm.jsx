@@ -36,6 +36,25 @@ const validationSchmea = yup.object().shape({
   password: yup.string().required('Password is required'),
 });
 
+export const SignInContainer = ({ onSubmit, }) => {
+
+  const initialValues = {
+    username:'',
+    password: ''
+  };
+  return (
+    <Formik initialValues={initialValues}
+      onSubmit = {(values) => onSubmit(values)}
+      validationSchema = {validationSchmea}
+
+    >
+
+      {({ handleSubmit }) => <SignIn handleSubmit={handleSubmit}/>}
+    </Formik>
+  );
+};
+
+
 const SignInForm = () => {
 
   const navigate = useNavigate();
@@ -52,19 +71,8 @@ const SignInForm = () => {
       console.log(e);
     }
   };
-  const initialValues = {
-    username:'',
-    password: ''
-  };
   return (
-    <Formik initialValues={initialValues}
-      onSubmit = {(values) => onSubmit(values)}
-      validationSchema = {validationSchmea}
-
-    >
-
-      {({ handleSubmit }) => <SignIn handleSubmit={handleSubmit}/>}
-    </Formik>
+    <SignInContainer onSubmit={onSubmit}/>
   );
 };
 const styles = StyleSheet.create({

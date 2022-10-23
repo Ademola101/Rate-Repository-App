@@ -4,7 +4,7 @@ import { Link } from 'react-router-native';
 import Constants from 'expo-constants';
 import theme from '../theme';
 import useAuthStorage from '../hooks/useAuthStorage';
-import { useMutation, useApolloClient, useQuery } from '@apollo/client';
+import {  useApolloClient, useQuery } from '@apollo/client';
 import { LOGOUT } from '../graphql/queries';
 import SignOut from './SignOut';
 

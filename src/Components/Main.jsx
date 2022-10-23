@@ -4,7 +4,8 @@ import Constants from 'expo-constants';
 import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import { Route, Routes, Navigate } from 'react-router-native';
-import SignInForm from './SignIn';
+import SignInForm from './SignInForm';
+import SingleRepoPage from './SingleRepoPage';
 
 const styles = StyleSheet.create({
 
@@ -22,6 +23,8 @@ const Main = () => {
         <Route path="/" element={<RepositoryList/>} exact/>
         <Route path='signin' element = {<SignInForm/>} exact />
         <Route path= '*' element={<Navigate to="/"  replace/> }/>
+
+        <Route path='/repository/:id' element={<SingleRepoPage/>} exact/>
       </Routes>
 
     </View>
