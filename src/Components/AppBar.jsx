@@ -47,6 +47,11 @@ const AppBar = () => {
           </Link>)
         }
 
+          <Link to= 'createreview' component = {Pressable}>
+            <NativeText style = {styles.text}>Create a review</NativeText>
+
+          </Link>
+
       </ScrollView>
 
 
