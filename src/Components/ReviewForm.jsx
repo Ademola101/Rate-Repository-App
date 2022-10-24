@@ -28,11 +28,11 @@ function ReviewForm({ handleSubmit }) {
       <View>
         <Text>ReviewForm</Text>
         <View>
-          <FormikTextInput name='username' placeholder = 'Enter Github username' />
-          <FormikTextInput name='name' placeholder = 'Enter Github Repo name' />
-          <FormikTextInput name='rating' placeholder = 'Enter rating' />
-          <FormikTextInput name='review' placeholder = 'Enter review' multiline />
-          <Button onPress = {handleSubmit} title = 'submit'/>
+          <FormikTextInput name='username' placeholder = 'Repository Owner Name' />
+          <FormikTextInput name='name' placeholder = 'Repository Name' />
+          <FormikTextInput name='rating' placeholder = 'Rating between 0 and 100' />
+          <FormikTextInput name='review' placeholder = 'Review' multiline />
+          <Button onPress = {handleSubmit} title = 'Create a review'/>
         </View>
 
 

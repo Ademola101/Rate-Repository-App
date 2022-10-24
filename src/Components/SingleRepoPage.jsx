@@ -20,7 +20,8 @@ const SingleRepoPage = () => {
   const { data } = useQuery(REPOSITORY,{
     variables: {
       id: id
-    }
+    },
+    fetchPolicy: 'cache-and-network'
   });
   console.log(result);
 
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
   separator: {
     height: 10,
     backgroundColor: 'lightgray',
-    marginBottom: 40,
-    marginTop: 40,
+    marginBottom: 10,
+    marginTop: 10,
   },
 });
