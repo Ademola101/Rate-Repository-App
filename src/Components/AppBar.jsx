@@ -47,10 +47,26 @@ const AppBar = () => {
           </Link>)
         }
 
-        <Link to= 'createreview' component = {Pressable}>
-          <NativeText style = {styles.text}>Create a review</NativeText>
+        {
+          data?.me  && ( <Link to= 'createreview' component = {Pressable}>
+            <NativeText style = {styles.text}>Create a review</NativeText>
 
-        </Link>
+          </Link>
+
+          )
+        }
+
+        {
+          !data?.me && (
+            <Link to= 'signup' component = {Pressable}>
+              <NativeText style = {styles.text}>
+                Sign up
+              </NativeText>
+
+            </Link>
+          )
+        }
+
 
       </ScrollView>
 

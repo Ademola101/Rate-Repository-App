@@ -7,6 +7,7 @@ import { Route, Routes, Navigate } from 'react-router-native';
 import SignInForm from './SignInForm';
 import SingleRepoPage from './SingleRepoPage';
 import ReviewFormik from './ReviewForm';
+import SignUp from './SignUp';
 
 const styles = StyleSheet.create({
 
@@ -27,6 +28,7 @@ const Main = () => {
 
         <Route path='/repository/:id' element={<SingleRepoPage/>} exact/>
         <Route path='createreview' element = {<ReviewFormik/>} />
+        <Route path='signup' element = {<SignUp/>} exact/>
       </Routes>
 
     </View>
