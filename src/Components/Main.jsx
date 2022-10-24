@@ -6,6 +6,7 @@ import AppBar from './AppBar';
 import { Route, Routes, Navigate } from 'react-router-native';
 import SignInForm from './SignInForm';
 import SingleRepoPage from './SingleRepoPage';
+import ReviewFormik from './ReviewForm';
 
 const styles = StyleSheet.create({
 
@@ -25,6 +26,7 @@ const Main = () => {
         <Route path= '*' element={<Navigate to="/"  replace/> }/>
 
         <Route path='/repository/:id' element={<SingleRepoPage/>} exact/>
+        <Route path='createreview' element = {<ReviewFormik/>} />
       </Routes>
 
     </View>

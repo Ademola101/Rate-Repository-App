@@ -14,11 +14,14 @@ const Review = ({ review }) => {
 
       <View style = {styles.textcontainer} >
         <Text style = {styles.ratingNumber}>{review.rating}</Text>
+        <View style = {styles.userdate}>
+
+          <Text style = {styles.name}>{review.user.username}</Text>
+          <Text style = {styles.date}>{dateFormater(review.createdAt)}</Text>
+        </View>
       </View>
 
       <View style = {styles.usercontainer}>
-        <Text style = {styles.name}>{review.user.username}</Text>
-        <Text style = {styles.date}>{dateFormater(review.createdAt)}</Text>
         <Text style = {styles.reviewtext} >{review.text}</Text>
       </View>
 
@@ -35,14 +38,13 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     marginBottom: 15,
     marginTop: 15,
-    flexDirection: 'row',
+    flexDirection: 'column',
     gap:20
 
   },
 
   ratingNumber: {
-    flexGrow: 1,
-    flexShrink: 1,
+    flex: 1,
     marginBottom: 15,
     backgroundColor: 'lightgray',
     borderRadius: 50,
@@ -52,15 +54,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     border: 'solid',
     color: theme.colors.primary,
+    height: 30,
   },
 
   textcontainer: {
-    flex: 1
+    flex: 1,
+    flexDirection: 'row',
   },
 
   usercontainer: {
-    flex:5,
+    flex:1,
     gap: 10,
+    marginLeft: 50,
   },
 
   name: {
@@ -75,5 +80,9 @@ const styles = StyleSheet.create({
 
   date: {
     color: 'gray',
-  }
+  },
+  userdate: {
+    flexDirection: 'column',
+    flex: 6,
+  },
 });

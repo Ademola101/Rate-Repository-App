@@ -11,6 +11,7 @@ const useSignIn = () => {
 
     // call the mutate function here with the right arguments
     const { data } = await mutate({ variables: { username, password } });
+    console.log(data);
     await authStorage.setToken(data.authenticate.accessToken);
     apolloClient.resetStore();
 
