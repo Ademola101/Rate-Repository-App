@@ -1,8 +1,12 @@
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, KeyboardAvoidingView, Platform } from 'react-native';
 import React from 'react';
 import FormikTextInput from './FormikTextInput';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { CREATE_REVIEW } from '../graphql/mutations';
+import { useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-native';
+
 
 
 const validationSchema = yup.object().shape({
@@ -20,26 +24,46 @@ const initialValus = {
 };
 function ReviewForm({ handleSubmit }) {
   return (
-    <View>
-      <Text>ReviewForm</Text>
+    <KeyboardAvoidingView behavior= {Platform.OS === 'ios' ? 'padding' : 'height'} >
       <View>
-        <FormikTextInput name='username' placeholder = 'Enter Github username' />
-        <FormikTextInput name='name' placeholder = 'Enter Github Repo name' />
-        <FormikTextInput name='rating' placeholder = 'Enter rating' />
-        <FormikTextInput name='review' placeholder = 'Enter review' />
-        <Button onPress = {handleSubmit} title = 'submit'/>
-      </View>
+        <Text>ReviewForm</Text>
+        <View>
+          <FormikTextInput name='username' placeholder = 'Enter Github username' />
+          <FormikTextInput name='name' placeholder = 'Enter Github Repo name' />
+          <FormikTextInput name='rating' placeholder = 'Enter rating' />
+          <FormikTextInput name='review' placeholder = 'Enter review' multiline />
+          <Button onPress = {handleSubmit} title = 'submit'/>
+        </View>
 
-    </View>
+
+      </View>
+    </KeyboardAvoidingView>
   );
 }
 
 export default function ReviewFormik() {
+  const navigate = useNavigate();
+  const [createReview] = useMutation(CREATE_REVIEW);
+  const onSubmit = async(values) => {
+    console.log(values);
+    const { username, name, rating, review } = values;
+    try {
+      const { data } = await createReview({
+        variables: { ownerName:username, repositoryName: name, rating: Number(rating), text: review }
+      });
+      console.log(data);
+      const id = data.createReview.repositoryId;
+      navigate(`repository/${id}`);
+    } catch (e) {
+      console.log(e);
+    }
+
+  };
   return (
     <Formik
 
       initialValues = {initialValus}
-      onSubmit = {values => console.log(values)}
+      onSubmit = {values => onSubmit(values)}
       validationSchema = {validationSchema}
 
     >

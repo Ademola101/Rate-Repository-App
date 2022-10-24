@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     border: 'solid',
     color: theme.colors.primary,
+    height: 30,
   },
 
   textcontainer: {
