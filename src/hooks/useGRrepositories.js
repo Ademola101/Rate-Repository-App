@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 
 const useRepositories = (
   { orderBy,
+    searchKeyword
     //  orderDirection, searchKeyword, first, after
   },
 ) => {
@@ -11,6 +12,7 @@ const useRepositories = (
     fetchPolicy: 'cache-and-network',
     variables: {
       orderBy,
+      searchKeyword
     },
   });
 

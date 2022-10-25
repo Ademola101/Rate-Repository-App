@@ -3,6 +3,9 @@ import { View, StyleSheet, FlatList } from 'react-native';
 import RepositoryItem from './RepositoryItem';
 import useRepositories from '../hooks/useGRrepositories';
 import { Picker } from '@react-native-picker/picker';
+import { Searchbar } from 'react-native-paper';
+import { useDebounce } from 'use-debounce';
+
 
 const styles = StyleSheet.create({
   separator: {
@@ -35,6 +38,7 @@ export const RepositoryListContainer = ({ repositories }) => {
         ItemSeparatorComponent={ItemSeparator}
         renderItem={renderItem}
         keyExtractor={item => item.id}
+
       />
 
 
@@ -49,6 +53,9 @@ const RepositoryList = () => {
   const itemRef = useRef();
   const [orderBy, setOrderBy]  = useState();
   const [orderDirection, setOrderDirection] = useState();
+  const [search, setSearch] = useState();
+
+  const [debouncedSearch] = useDebounce(search, 500);
   const  onValueChange = (itemValue) => {
     setOrderBy(itemValue);
   };
@@ -56,9 +63,21 @@ const RepositoryList = () => {
   const { repositories } = useRepositories({
     orderBy,
     orderDirection,
+    searchKeyword: debouncedSearch,
   });
 
+  const onSearchChange = (query) => {
+    setSearch(query);
+  };
+
   return (<>
+    <Searchbar
+      placeholder="Search"
+      onChangeText={onSearchChange}
+      value={search}
+
+
+    />
     <Picker
 
       selectedValue={orderBy}
