@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import RepositoryItem from './RepositoryItem';
-import useRepositories from '../hooks/useRepositories';
+import useRepositories from '../hooks/useGRrepositories';
+import { Picker } from '@react-native-picker/picker';
 
 const styles = StyleSheet.create({
   separator: {
@@ -19,7 +20,9 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style = {styles.separator}/>;
 
 export const RepositoryListContainer = ({ repositories }) => {
-  const repositoryNodes =  repositories?.edges.map(edge => edge.node);
+
+  const repositoryNodes =  repositories?.repositories?.edges?.map(edge => edge.node);
+  console.log(repositories);
 
   const renderItem  = ({ item }) => (
     <RepositoryItem repository={item}/>
@@ -43,9 +46,35 @@ export const RepositoryListContainer = ({ repositories }) => {
 
 const RepositoryList = () => {
 
-  const { repositories } = useRepositories();
-  console.log('repositories', repositories);
-  return <RepositoryListContainer repositories={repositories}/>;
+  const itemRef = useRef();
+  const [orderBy, setOrderBy]  = useState();
+  const [orderDirection, setOrderDirection] = useState();
+  const  onValueChange = (itemValue) => {
+    setOrderBy(itemValue);
+  };
+
+  const { repositories } = useRepositories({
+    orderBy,
+    orderDirection,
+  });
+
+  return (<>
+    <Picker
+
+      selectedValue={orderBy}
+      onValueChange={(itemValue) => {
+        setOrderBy(itemValue);
+
+      }}
+    >
+      <Picker.Item label="Higest rated repository" value="RATING_AVERAGE" />
+      <Picker.Item label="Latest repository" value="CREATED_AT" />
+      <Picker.Item label="Lowest rated repository" value="RATING_AVERAGE" />
+
+    </Picker>
+
+    <RepositoryListContainer repositories={repositories}  onValueChange= {onValueChange}/>
+  </> );
 };
 
 
