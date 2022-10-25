@@ -36,6 +36,8 @@ const SingleRepoPage = () => {
       keyExtractor = {({ id }) => id}
       ListHeaderComponent = {() => <SingleRepo data={data}/>}
       ItemSeparatorComponent = {itemSeparator}
+      contentContainerStyle={{ paddingBottom: 100
+      }}
 
     />
   );
